@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Modelo | Agência Vitrô</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+<body>
+    <div class="noise-overlay"></div>
+    <div class="bg-glow-1"></div>
+
+    <nav style="padding: 20px; display: flex; justify-content: center;">
+        <a href="index.html" style="text-decoration: none;">
+            <div class="vitro-logo" style="font-size: 5px; color: #ffffff;"></div>
+        </a>
+    </nav>
+
+    <section class="hero-detail">
+        <span class="hero-tag" id="modelo-tag">Tecnologia</span>
+        <h1 class="section-title" id="modelo-titulo" style="font-size: 3.5rem; margin-bottom: 30px;">Carregando...</h1>
+        <p class="section-subtitle" id="modelo-desc">
+            Descrição detalhada do modelo...
+        </p>
+        
+        <div style="margin-top: 40px;">
+            <a href="#fluxo" class="btn-buy" style="max-width: 200px; margin: 0 auto; background: transparent; border-color: var(--accent); color: var(--accent);">
+                Ver como funciona ↓
+            </a>
+        </div>
+    </section>
+
+    <section id="fluxo" class="content-section">
+        <h2 class="section-title" style="font-size: 2rem; margin-bottom: 80px;">A Experiência do seu Cliente</h2>
+        
+        <div id="client-features-container">
+            </div>
+    </section>
+
+    <div style="height: 1px; background: linear-gradient(to right, transparent, var(--border), transparent); max-width: 800px; margin: 0 auto;"></div>
+
+    <section class="content-section">
+        <h2 class="section-title" style="font-size: 2rem; color: var(--accent);">Seu Painel de Controle</h2>
+        <p class="section-subtitle">Tudo o que você gerencia pelo celular.</p>
+        
+        <div class="bento-grid" id="owner-features-container">
+            </div>
+    </section>
+
+    <section class="content-section" style="text-align: center;">
+        <div class="card" style="border: 2px solid var(--accent); padding: 60px 20px; background: radial-gradient(circle at center, rgba(16,185,129,0.1), transparent 80%);">
+            <h2 style="font-size: 2.5rem; font-weight: 900; color: #fff; margin-bottom: 20px;">Vamos modernizar seu negócio?</h2>
+            <div style="font-size: 1.2rem; color: var(--text-muted); margin-bottom: 40px;">
+                Custo de Criação: <span style="color: #fff; font-weight: bold; text-decoration: line-through;">R$ 1.500,00</span> <span style="color: var(--accent); font-weight: 900; font-size: 1.5rem;">GRÁTIS</span><br>
+                Entrega em 48 horas.
+            </div>
+            
+            <a href="#" id="whatsapp-link" target="_blank" class="btn-buy featured-btn" style="max-width: 350px; margin: 0 auto; font-size: 1.2rem;">
+                Contratar Agora ➜
+            </a>
+            <p style="margin-top: 20px; font-size: 0.9rem; color: var(--text-muted);">Pagamento seguro e garantia de satisfação.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="vitro-logo" style="font-size: 6px; color: #94a3b8; margin-bottom: 20px;"></div>
+        
+        <p>&copy; 2026 Agência Vitrô. CNPJ 49.899.482/0001-52</p>
+    </footer>
+
+    <script src="script.js"></script>
+
+    <script>
+        // CONFIGURAÇÃO WHATSAPP AGÊNCIA
+        const AGENCY_PHONE = "551151998993";
+
+        // DADOS RICOS (MANTIDOS ORIGINAIS)
+        const content = {
+            'agenda': {
+                tag: "Barbearias & Clínicas",
+                title: "Agenda Inteligente",
+                desc: "O sistema definitivo para quem vende horário. Elimine o 'zap-zap' para marcar horário e deixe o robô organizar sua fila de espera.",
+                clientFlow: [
+                    { title: "Visualização Instantânea", text: "O cliente acessa seu link e vê apenas os horários livres. Sem perguntar 'tem vaga pra hoje?'.", visual: "📅" },
+                    { title: "Agendamento em 2 Cliques", text: "Ele escolhe o serviço (Corte, Barba), seleciona a hora e confirma. Simples assim.", visual: "👆" }
+                ],
+                ownerFlow: [
+                    { title: "App Administrativo", text: "Tenha a visão completa do seu dia no bolso.", icon: "📱" },
+                    { title: "Bloqueio de Emergência", text: "Teve um imprevisto? Bloqueie o horário e ele some do site na hora.", icon: "🚫" },
+                    { title: "Histórico de Clientes", text: "Saiba quem são seus clientes mais fiéis.", icon: "📊" }
+                ]
+            },
+            'loja': {
+                tag: "Varejo & Delivery",
+                title: "Vitrine Digital Zap",
+                desc: "Transforme seu Instagram em uma máquina de vendas. Um site lindo onde o cliente monta o pedido e te envia pronto no WhatsApp.",
+                clientFlow: [
+                    { title: "Experiência de App", text: "Seu cliente navega por categorias, vê fotos em alta resolução e descrições detalhadas.", visual: "🛍️" },
+                    { title: "Carrinho Inteligente", text: "Ele adiciona vários itens, vê o total somado e escolhe a forma de entrega.", visual: "🛒" },
+                    { title: "Pedido Formatado", text: "Você recebe no WhatsApp: 'Olá, quero 1x Burguer Bacon e 1x Coca-Cola'. Sem erros.", visual: "💬" }
+                ],
+                ownerFlow: [
+                    { title: "Cadastro Relâmpago", text: "Tire a foto do produto e suba para o site em 10 segundos.", icon: "📸" },
+                    { title: "Controle de Preços", text: "Vai fazer promoção? Mude o preço no app e o site atualiza na hora.", icon: "🏷️" },
+                    { title: "Gestão de Esgotados", text: "Acabou o estoque? Marque como esgotado para não vender o que não tem.", icon: "📦" }
+                ]
+            },
+            'auto': {
+                tag: "E-commerce Pro",
+                title: "Loja 100% Automática",
+                desc: "Para quem não tem tempo a perder. O cliente compra, paga e o sistema dá baixa no estoque. Você só embala e envia.",
+                clientFlow: [
+                    { title: "Checkout Transparente", text: "Pagamento via Pix (Copia e Cola) ou Cartão sem sair do seu site.", visual: "💳" },
+                    { title: "Cálculo de Frete", text: "Opções de entrega ou retirada configuráveis.", visual: "🚚" }
+                ],
+                ownerFlow: [
+                    { title: "Baixa Automática", text: "O sistema reconhece o pagamento e reserva o produto sozinho.", icon: "🤖" },
+                    { title: "Painel Financeiro", text: "Gráficos de faturamento diário, semanal e mensal.", icon: "📈" },
+                    { title: "Zero Calote", text: "O pedido só chega pra você depois de aprovado.", icon: "🔒" }
+                ]
+            }
+        };
+
+        // CARREGAR DADOS
+        const params = new URLSearchParams(window.location.search);
+        const type = params.get('modelo') || 'loja';
+        const data = content[type] || content['loja'];
+
+        document.getElementById('modelo-tag').innerText = data.tag;
+        document.getElementById('modelo-titulo').innerText = data.title;
+        document.getElementById('modelo-desc').innerText = data.desc;
+        
+        // Link Zap
+        const zapMsg = `Olá Vitrô! Gostei do modelo: ${data.title}. Quero saber mais sobre a oferta gratuita.`;
+        document.getElementById('whatsapp-link').href = `https://wa.me/${AGENCY_PHONE}?text=${encodeURIComponent(zapMsg)}`;
+
+        // RENDERIZAR FLUXO DO CLIENTE
+        const clientContainer = document.getElementById('client-features-container');
+        data.clientFlow.forEach(item => {
+            clientContainer.innerHTML += `
+                <div class="feature-row">
+                    <div class="feature-text">
+                        <h3>${item.title}</h3>
+                        <p>${item.text}</p>
+                    </div>
+                    <div class="feature-visual">
+                        <div class="mockup-ui"></div>
+                        <div style="position: absolute; font-size: 4rem; z-index: 2;">${item.visual}</div>
+                    </div>
+                </div>
+            `;
+        });
+
+        // RENDERIZAR FLUXO DO DONO
+        const ownerContainer = document.getElementById('owner-features-container');
+        data.ownerFlow.forEach((item, index) => {
+            ownerContainer.innerHTML += `
+                <div class="card step-card">
+                    <span class="step-number">${index + 1}</span>
+                    <div class="step-icon">${item.icon}</div>
+                    <div class="step-content">
+                        <h3>${item.title}</h3>
+                        <p>${item.text}</p>
+                    </div>
+                </div>
+            `;
+        });
+
+        // OBS: ANIMAÇÕES GSAP FORAM REMOVIDAS DAQUI
+        // O arquivo script.js principal já anima automaticamente todos os elementos
+        // com classes .feature-row e .step-card. Isso evita conflito e bug visual.
+
+    </script>
+</body>
+</html>
