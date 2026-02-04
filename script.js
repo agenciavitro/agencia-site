@@ -1,43 +1,56 @@
 document.addEventListener("DOMContentLoaded", () => {
     
-    gsap.registerPlugin(ScrollTrigger);
-    
-    // 1. INJEÇÃO DO LOGO (COM EFEITOS RESTAURADOS)
+    // 1. INJEÇÃO DO LOGO (PRIORIDADE MÁXIMA)
+    // Movido para o topo para garantir que apareça mesmo se o GSAP falhar
     initLogos(); 
 
-    // Seletor ajustado para a classe padronizada .logo-wrapper-v
-    const heroLogo = document.querySelector("#hero .logo-wrapper-v");
-    
-    if (heroLogo) {
-        const tl = gsap.timeline({ onComplete: initScrollAnimation });
+    // Verificação de Segurança: Só tenta animar se o GSAP carregou corretamente
+    if (typeof gsap !== 'undefined') {
+        gsap.registerPlugin(ScrollTrigger);
 
-        tl.from(heroLogo, {
-            duration: 1.2,
-            y: 60,
-            opacity: 0,
-            ease: "power3.out"
-        })
-        .from("#hero .accent-v", { 
-            duration: 1,
-            y: -100, 
-            opacity: 0,
-            ease: "bounce.out"
-        }, "-=0.8")
-        .to(".hero-title", {
-            opacity: 1,
-            y: 0,
-            duration: 0.8
-        })
-        .to(".scroll-indicator", {
-            opacity: 0.7,
-            duration: 0.8
-        }, "-=0.5");
+        // Seletor ajustado para a classe padronizada .logo-wrapper-v
+        const heroLogo = document.querySelector("#hero .logo-wrapper-v");
+        
+        if (heroLogo) {
+            const tl = gsap.timeline({ onComplete: initScrollAnimation });
+
+            tl.from(heroLogo, {
+                duration: 1.2,
+                y: 60,
+                opacity: 0,
+                ease: "power3.out"
+            })
+            .from("#hero .accent-v", { 
+                duration: 1,
+                y: -100, 
+                opacity: 0,
+                ease: "bounce.out"
+            }, "-=0.8")
+            .to(".hero-title", {
+                opacity: 1,
+                y: 0,
+                duration: 0.8
+            })
+            .to(".scroll-indicator", {
+                opacity: 0.7,
+                duration: 0.8
+            }, "-=0.5");
+        } else {
+            initScrollAnimation();
+        }
     } else {
-        initScrollAnimation();
+        // Fallback se GSAP não carregar: garante que o título apareça
+        const title = document.querySelector(".hero-title");
+        if(title) {
+            title.style.opacity = 1;
+            title.style.transform = "none";
+        }
+        console.warn("GSAP não carregou. Animações desativadas.");
     }
 
-
     function initScrollAnimation() {
+        if (typeof gsap === 'undefined') return;
+
         if(document.querySelector("#hero")) {
             gsap.to("#hero .logo-wrapper-v", {
                 scrollTrigger: {
@@ -70,6 +83,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     document.addEventListener('mousemove', (e) => {
+        if (typeof gsap === 'undefined') return;
+
         const x = (e.clientX / window.innerWidth - 0.5) * 20;
         const y = (e.clientY / window.innerHeight - 0.5) * 20;
 
