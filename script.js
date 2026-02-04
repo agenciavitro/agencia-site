@@ -1,4 +1,4 @@
-// Tenta iniciar as logos imediatamente (caso o script rode depois do HTML)
+// Tenta iniciar as logos imediatamente (Correção para não sumir)
 if (document.querySelector('.vitro-logo')) {
     initLogos();
     window.logosLoaded = true;
@@ -17,7 +17,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const heroLogo = document.querySelector("#hero .logo-wrapper-v");
             
-            // Só anima se o logo existir e tiver sido renderizado
             if (heroLogo) {
                 const tl = gsap.timeline({ onComplete: initScrollAnimation });
 
@@ -51,8 +50,8 @@ document.addEventListener("DOMContentLoaded", () => {
             document.querySelectorAll('.hero-title, .scroll-indicator').forEach(el => el.style.opacity = 1);
         }
     } else {
-        // Fallback: Se o GSAP não carregar, mostra tudo estático
-        initScrollAnimation(); // Chama para remover opacidade 0 dos cards
+        // Fallback: Se o GSAP não carregar
+        initScrollAnimation(); 
         const titles = document.querySelectorAll(".hero-title, .scroll-indicator");
         titles.forEach(el => {
             el.style.opacity = 1;
@@ -61,7 +60,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function initScrollAnimation() {
-        // Garante que os cards apareçam mesmo sem GSAP
         if (typeof gsap === 'undefined') {
             document.querySelectorAll('.card, .info-card, .price-card, .step-card, .feature-row').forEach(c => {
                 c.style.opacity = 1;
@@ -110,22 +108,26 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function initLogos() {
-    // Evita rodar duas vezes
     if (document.querySelector('.logo-wrapper-v')) return;
 
+    // AQUI ESTÁ O RESTAURO: Voltei para sua fonte original 'Inter'
     const style = document.createElement('style');
     style.innerHTML = `
+        /* BASE DO LOGO - CLASSE COM SUFIXO -V */
         .logo-wrapper-v {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            font-family: 'Inter', sans-serif;
             position: relative;
             display: flex;
             flex-direction: column;
             align-items: flex-start;
             user-select: none;
             line-height: 1;
+            /* Tamanho base */
             font-size: 10px; 
             cursor: pointer;
         }
+
+        /* SUBTÍTULO */
         .brand-sub-v {
             font-size: 1.2em;
             font-weight: 700;
@@ -136,6 +138,8 @@ function initLogos() {
             color: inherit; 
             opacity: 0.7;
         }
+
+        /* TÍTULO PRINCIPAL */
         .brand-main-v {
             font-size: 8em;
             font-weight: 900;
@@ -146,11 +150,14 @@ function initLogos() {
             line-height: 0.65;
             color: inherit; 
         }
+
+        /* O CHARME DO ACENTO */
         .char-o-wrapper-v {
             position: relative;
             display: inline-block;
             margin-left: 0.02em;
         }
+
         .accent-v {
             position: absolute;
             top: -0.20em;
@@ -158,9 +165,13 @@ function initLogos() {
             transform: translateX(-50%);
             font-size: 0.85em;
             font-weight: 900;
-            color: #10b981;
+            color: #10b981; /* Verde Vitrô Original */
+            
+            /* TRANSIÇÃO SUAVE PARA O EFEITO */
             transition: top 0.3s ease, color 0.3s ease, text-shadow 0.3s ease;
         }
+
+        /* O PINGO (REDONDO) */
         .dot-v {
             width: 0.15em;
             height: 0.15em;
@@ -168,20 +179,29 @@ function initLogos() {
             border-radius: 50%; 
             margin-left: 0.1em;
             display: inline-block;
+            
+            /* TRANSIÇÃO SUAVE PARA O EFEITO */
             transition: background-color 0.3s ease, box-shadow 0.3s ease;
         }
+
+        /* --- EFEITOS DE INTERAÇÃO (HOVER) --- */
+        
+        /* Ao passar o mouse no logo, o acento sobe e brilha */
         .logo-wrapper-v:hover .accent-v {
-            top: -0.35em;
-            color: #34d399;
-            text-shadow: 0 0 20px rgba(16, 185, 129, 0.6);
+            top: -0.35em; /* Levita */
+            color: #34d399; /* Verde Luz */
+            text-shadow: 0 0 20px rgba(16, 185, 129, 0.6); /* Glow */
         }
+
+        /* Ao passar o mouse no logo, o ponto também brilha */
         .logo-wrapper-v:hover .dot-v {
-            background-color: #34d399;
-            box-shadow: 0 0 20px rgba(16, 185, 129, 0.6);
+            background-color: #34d399; /* Verde Luz */
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.6); /* Glow */
         }
     `;
     document.head.appendChild(style);
 
+    // 2. INJEÇÃO DO HTML
     const logoHTML = `
         <span class="brand-sub-v">agência</span>
         <div class="brand-main-v">
