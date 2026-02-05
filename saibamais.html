@@ -3,175 +3,216 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detalhes do Modelo | Agência Vitrô</title>
+    <title>Vitrô | Finalize seu Projeto</title>
+    
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        vitro: {
+                            dark: '#0f172a',
+                            card: '#1e293b',
+                            accent: '#10b981',
+                            hover: '#34d399',
+                            text: '#f8fafc'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Archivo', 'Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700;900&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
-<body>
-    <div class="noise-overlay"></div>
-    <div class="bg-glow-1"></div>
+<body class="antialiased selection:bg-vitro-accent selection:text-vitro-dark bg-vitro-dark text-white">
 
-    <nav style="padding: 20px; display: flex; justify-content: center;">
-        <a href="index.html" style="text-decoration: none;">
-            <div class="vitro-logo" style="font-size: 5px; color: #ffffff;"></div>
-        </a>
-    </nav>
+    <div class="glow-bg glow-top-left"></div>
+    <div class="glow-bg glow-blue-tint glow-bottom-right"></div>
 
-    <section class="hero-detail">
-        <span class="hero-tag" id="modelo-tag">Tecnologia</span>
-        <h1 class="section-title" id="modelo-titulo" style="font-size: 3.5rem; margin-bottom: 30px;">Carregando...</h1>
-        <p class="section-subtitle" id="modelo-desc">
-            Descrição detalhada do modelo...
-        </p>
-        
-        <div style="margin-top: 40px;">
-            <a href="#fluxo" class="btn-buy" style="max-width: 200px; margin: 0 auto; background: transparent; border-color: var(--accent); color: var(--accent);">
-                Ver como funciona ↓
-            </a>
+    <section class="relative pt-20 pb-20 px-6 overflow-hidden min-h-screen flex items-center">
+        <div class="container mx-auto max-w-6xl relative z-10 grid lg:grid-cols-2 gap-12 items-center">
+            
+            <div class="text-center lg:text-left">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-vitro-accent/10 border border-vitro-accent/20 text-vitro-accent text-xs font-bold uppercase tracking-widest mb-6 animate-fadeIn">
+                    <span class="w-2 h-2 rounded-full bg-vitro-accent animate-pulse"></span>
+                    Últimas vagas com Setup Grátis
+                </div>
+                
+                <h1 id="hero-title" class="font-display text-4xl md:text-6xl font-black leading-tight mb-6">
+                    Tenha o mesmo sistema que você <span class="text-transparent bg-clip-text bg-gradient-to-r from-vitro-accent to-blue-400">acabou de testar.</span>
+                </h1>
+                
+                <p id="hero-desc" class="text-gray-400 text-lg md:text-xl leading-relaxed mb-8 max-w-2xl mx-auto lg:mx-0">
+                    Não é apenas um site. É uma ferramenta completa para automatizar seu negócio, impressionar clientes e aumentar seu faturamento.
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                    <button onclick="scrollToPricing()" class="bg-vitro-accent hover:bg-vitro-hover text-vitro-dark font-black py-4 px-8 rounded-full shadow-[0_0_20px_rgba(16,185,129,0.3)] transition transform hover:scale-105 flex items-center justify-center gap-2 uppercase tracking-wide text-sm">
+                        Garantir oferta agora
+                        <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                    </button>
+                    <a href="#how-it-works" class="px-8 py-4 rounded-full border border-white/10 hover:bg-white/5 font-bold transition flex items-center justify-center gap-2 text-sm uppercase tracking-wide">
+                        Como funciona?
+                    </a>
+                </div>
+            </div>
+
+            <div class="relative hidden lg:block perspective-1000">
+                <div class="relative z-10 bg-vitro-card border border-white/10 rounded-3xl p-3 shadow-2xl transform rotate-y-[-5deg] hover:rotate-y-0 transition duration-700 animate-float group">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-vitro-accent/5 to-transparent rounded-3xl pointer-events-none"></div>
+                    <img id="hero-img" src="" class="w-full rounded-2xl shadow-inner border border-white/5 opacity-90 group-hover:opacity-100 transition" alt="Preview do Sistema">
+                </div>
+            </div>
         </div>
     </section>
 
-    <section id="fluxo" class="content-section">
-        <h2 class="section-title" style="font-size: 2rem; margin-bottom: 80px;">A Experiência do seu Cliente</h2>
-        
-        <div id="client-features-container">
+    <section id="features" class="py-20 bg-vitro-card/30 border-y border-white/5">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="text-center mb-16">
+                <h2 class="font-display text-3xl md:text-4xl font-bold mb-4">Pare de perder vendas no WhatsApp</h2>
+                <p class="text-gray-400">Seu cliente quer facilidade. Se você demora para responder, ele compra do concorrente.</p>
             </div>
+            <div id="features-grid" class="grid md:grid-cols-3 gap-8"></div>
+        </div>
     </section>
 
-    <div style="height: 1px; background: linear-gradient(to right, transparent, var(--border), transparent); max-width: 800px; margin: 0 auto;"></div>
-
-    <section class="content-section">
-        <h2 class="section-title" style="font-size: 2rem; color: var(--accent);">Seu Painel de Controle</h2>
-        <p class="section-subtitle">Tudo o que você gerencia pelo celular.</p>
-        
-        <div class="bento-grid" id="owner-features-container">
-            </div>
-    </section>
-
-    <section class="content-section" style="text-align: center;">
-        <div class="card" style="border: 2px solid var(--accent); padding: 60px 20px; background: radial-gradient(circle at center, rgba(16,185,129,0.1), transparent 80%);">
-            <h2 style="font-size: 2.5rem; font-weight: 900; color: #fff; margin-bottom: 20px;">Vamos modernizar seu negócio?</h2>
-            <div style="font-size: 1.2rem; color: var(--text-muted); margin-bottom: 40px;">
-                Custo de Criação: <span style="color: #fff; font-weight: bold; text-decoration: line-through;">R$ 1.500,00</span> <span style="color: var(--accent); font-weight: 900; font-size: 1.5rem;">GRÁTIS</span><br>
-                Entrega em 48 horas.
+    <section id="how-it-works" class="py-20 overflow-hidden">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <div class="text-center mb-16">
+                <h2 class="font-display text-3xl font-bold mb-4">Do pedido ao ar em 3 passos</h2>
             </div>
             
-            <a href="#" id="whatsapp-link" target="_blank" class="btn-buy featured-btn" style="max-width: 350px; margin: 0 auto; font-size: 1.2rem;">
-                Contratar Agora ➜
-            </a>
-            <p style="margin-top: 20px; font-size: 0.9rem; color: var(--text-muted);">Pagamento seguro e garantia de satisfação.</p>
+            <div class="grid md:grid-cols-3 gap-8 relative">
+                <div class="hidden md:block absolute top-12 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-vitro-accent/30 to-transparent z-0"></div>
+
+                <div class="relative z-10 text-center">
+                    <div class="w-24 h-24 mx-auto bg-vitro-dark border-2 border-vitro-accent rounded-full flex items-center justify-center text-3xl font-black text-vitro-accent mb-6 shadow-[0_0_20px_rgba(16,185,129,0.2)]">1</div>
+                    <h3 class="font-bold text-xl mb-2">Você contrata</h3>
+                    <p class="text-sm text-gray-400 px-4">Garanta o preço promocional abaixo antes que o lote vire.</p>
+                </div>
+                <div class="relative z-10 text-center">
+                    <div class="w-24 h-24 mx-auto bg-vitro-dark border-2 border-gray-700 rounded-full flex items-center justify-center text-3xl font-black text-white mb-6">2</div>
+                    <h3 class="font-bold text-xl mb-2">Nós configuramos</h3>
+                    <p class="text-sm text-gray-400 px-4">Relaxe. Nossa equipe monta seu site profissional em até 5 dias úteis.</p>
+                </div>
+                <div class="relative z-10 text-center">
+                    <div class="w-24 h-24 mx-auto bg-vitro-dark border-2 border-gray-700 rounded-full flex items-center justify-center text-3xl font-black text-white mb-6">3</div>
+                    <h3 class="font-bold text-xl mb-2">Venda Mais!</h3>
+                    <p class="text-sm text-gray-400 px-4">Você recebe o link pronto e o acesso ao gerenciador. É só divulgar e lucrar.</p>
+                </div>
+            </div>
         </div>
     </section>
 
-    <footer class="footer">
+    <section id="pricing" class="py-20 relative overflow-hidden">
+        <div class="container mx-auto px-6 max-w-4xl text-center relative z-10">
+            <div class="bg-gradient-to-b from-vitro-card to-vitro-dark border border-vitro-accent/30 rounded-3xl p-8 md:p-12 shadow-[0_0_60px_rgba(16,185,129,0.15)] relative group hover:border-vitro-accent/60 transition-colors duration-500">
+                
+                <div class="absolute top-0 left-1/2 -translate-x-1/2 bg-vitro-accent text-vitro-dark text-xs font-black px-6 py-1.5 rounded-b-lg uppercase tracking-widest shadow-lg animate-pulse-slow">
+                    OFERTA POR TEMPO LIMITADO
+                </div>
+
+                <h2 class="font-display text-2xl md:text-4xl font-bold mt-6 mb-2">Plano Profissional Vitrô</h2>
+                <p class="text-gray-400 mb-8">O melhor custo-benefício do mercado.</p>
+
+                <div class="flex flex-col md:flex-row items-center justify-between gap-8 mb-8 p-6 bg-white/5 rounded-2xl border border-white/5">
+                    <div class="text-left w-full md:w-1/2">
+                        <p class="text-gray-400 text-xs font-bold uppercase tracking-wide mb-1">Custo de Criação do Site</p>
+                        <div class="flex flex-col">
+                            <span class="text-gray-500 line-through text-lg decoration-red-500/50">De R$ 1.200,00</span>
+                            <span class="text-4xl md:text-5xl font-black text-white tracking-tighter">GRÁTIS</span>
+                        </div>
+                        <p class="text-xs text-vitro-accent mt-1 font-bold">Você economiza R$ 1.200,00 hoje</p>
+                    </div>
+                    
+                    <div class="text-right w-full md:w-1/2 border-l-0 md:border-l border-white/10 pl-0 md:pl-8 mt-6 md:mt-0 flex flex-col justify-center">
+                         <p class="text-gray-400 text-xs font-bold uppercase tracking-wide mb-2">Manutenção Mensal</p>
+                         
+                         <div class="flex flex-col items-end">
+                             <span class="text-xl font-black text-white uppercase tracking-wide leading-none mb-1">APENAS</span>
+                             
+                             <div class="flex items-baseline gap-1">
+                                <span class="text-2xl text-gray-400 font-bold">R$</span>
+                                <span id="dynamic-price" class="text-5xl md:text-6xl font-black text-vitro-accent tracking-tighter">--,--</span>
+                            </div>
+                         </div>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-4 text-left mb-8">
+                    <div class="flex items-center gap-3 text-gray-300"><i data-lucide="check-circle" class="text-vitro-accent w-5 h-5 shrink-0"></i> <strong>Site Completo</strong> (Não é só cartão digital)</div>
+                    <div class="flex items-center gap-3 text-gray-300"><i data-lucide="check-circle" class="text-vitro-accent w-5 h-5 shrink-0"></i> <strong>Gestão Simples</strong> pelo Celular</div>
+                    <div class="flex items-center gap-3 text-gray-300"><i data-lucide="check-circle" class="text-vitro-accent w-5 h-5 shrink-0"></i> <strong>Hospedagem Premium</strong> Inclusa</div>
+                    <div class="flex items-center gap-3 text-gray-300"><i data-lucide="check-circle" class="text-vitro-accent w-5 h-5 shrink-0"></i> <strong>Suporte Humanizado</strong> no WhatsApp</div>
+                    <div class="flex items-center gap-3 text-gray-300"><i data-lucide="check-circle" class="text-vitro-accent w-5 h-5 shrink-0"></i> <strong>Domínio .com.br</strong> Grátis</div>
+                    <div class="flex items-center gap-3 text-gray-300"><i data-lucide="check-circle" class="text-vitro-accent w-5 h-5 shrink-0"></i> <strong>Sem Fidelidade</strong> (Cancele quando quiser)</div>
+                </div>
+
+                <button id="btn-whatsapp-buy" class="w-full bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold text-xl py-5 rounded-xl shadow-lg transition transform hover:scale-[1.02] flex items-center justify-center gap-3 group-hover:shadow-[0_0_30px_rgba(37,211,102,0.4)] relative overflow-hidden">
+                    <div class="absolute inset-0 bg-white/20 translate-x-[-100%] animate-[shimmer_2s_infinite]"></div>
+                    <svg viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8 relative z-10"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-8.68-2.031-.967-.272-.099-.47-.149-.669.198-.198.347-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                    <span class="relative z-10">QUERO APROVEITAR AGORA</span>
+                </button>
+                <p class="mt-4 text-xs text-gray-500 font-medium">🔒 Compra 100% Segura e Garantida pelo Mercado Pago</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-white/5 border-y border-white/5">
+        <div class="container mx-auto px-6 max-w-4xl text-center">
+            <div class="w-16 h-16 bg-vitro-accent/10 rounded-full flex items-center justify-center mx-auto mb-6 text-vitro-accent">
+                <i data-lucide="shield-check" class="w-8 h-8"></i>
+            </div>
+            <h2 class="font-display text-2xl font-bold mb-4">Garantia Blindada de 7 Dias</h2>
+            <p class="text-gray-400 max-w-2xl mx-auto leading-relaxed">
+                Nós confiamos tanto no nosso trabalho que assumimos todo o risco. Se em até 7 dias você não estiver satisfeito com seu site novo, 
+                <span class="text-white font-bold">nós devolvemos 100% do valor da primeira mensalidade.</span> Sem perguntas e sem letras miúdas.
+            </p>
+        </div>
+    </section>
+
+    <section class="py-20 bg-vitro-card/20 pb-10">
+        <div class="container mx-auto px-6 max-w-3xl">
+            <h2 class="font-display text-3xl font-bold text-center mb-10">Dúvidas Comuns</h2>
+            <div class="space-y-4">
+                <details class="group bg-vitro-dark border border-white/10 rounded-xl p-4 cursor-pointer">
+                    <summary class="font-bold text-gray-200 flex justify-between items-center list-none">Tenho fidelidade? Posso cancelar?<span class="transition group-open:rotate-180"><i data-lucide="chevron-down"></i></span></summary>
+                    <p class="text-gray-400 mt-3 text-sm leading-relaxed">Não existe fidelidade. Você paga mês a mês e pode cancelar a qualquer momento sem multa.</p>
+                </details>
+                <details class="group bg-vitro-dark border border-white/10 rounded-xl p-4 cursor-pointer">
+                    <summary class="font-bold text-gray-200 flex justify-between items-center list-none">Preciso saber mexer em sites?<span class="transition group-open:rotate-180"><i data-lucide="chevron-down"></i></span></summary>
+                    <p class="text-gray-400 mt-3 text-sm leading-relaxed">Zero. Você vai gerenciar tudo (preços, horários, fotos) através do App Google no seu celular, super simples e intuitivo.</p>
+                </details>
+                <details class="group bg-vitro-dark border border-white/10 rounded-xl p-4 cursor-pointer">
+                    <summary class="font-bold text-gray-200 flex justify-between items-center list-none">O domínio é meu mesmo?<span class="transition group-open:rotate-180"><i data-lucide="chevron-down"></i></span></summary>
+                    <p class="text-gray-400 mt-3 text-sm leading-relaxed">Sim! Registramos o domínio no seu nome ou da sua empresa (CPF ou CNPJ). Ele é sua propriedade.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer footer-connected">
         <div class="vitro-logo" style="font-size: 6px; color: #94a3b8; margin-bottom: 20px;"></div>
-        
-        <p>&copy; 2026 Agência Vitrô. CNPJ 49.899.482/0001-52</p>
+        <p class="footer-cnpj">CNPJ: 50.817.472/0001-44</p>
+        <p class="footer-copy">&copy; 2026 Agência Vitrô. Todos os direitos reservados.</p>
     </footer>
 
     <script src="script.js"></script>
-
-    <script>
-        // CONFIGURAÇÃO WHATSAPP AGÊNCIA
-        const AGENCY_PHONE = "551151998993";
-
-        // DADOS RICOS (MANTIDOS ORIGINAIS)
-        const content = {
-            'agenda': {
-                tag: "Barbearias & Clínicas",
-                title: "Agenda Inteligente",
-                desc: "O sistema definitivo para quem vende horário. Elimine o 'zap-zap' para marcar horário e deixe o robô organizar sua fila de espera.",
-                clientFlow: [
-                    { title: "Visualização Instantânea", text: "O cliente acessa seu link e vê apenas os horários livres. Sem perguntar 'tem vaga pra hoje?'.", visual: "📅" },
-                    { title: "Agendamento em 2 Cliques", text: "Ele escolhe o serviço (Corte, Barba), seleciona a hora e confirma. Simples assim.", visual: "👆" }
-                ],
-                ownerFlow: [
-                    { title: "App Administrativo", text: "Tenha a visão completa do seu dia no bolso.", icon: "📱" },
-                    { title: "Bloqueio de Emergência", text: "Teve um imprevisto? Bloqueie o horário e ele some do site na hora.", icon: "🚫" },
-                    { title: "Histórico de Clientes", text: "Saiba quem são seus clientes mais fiéis.", icon: "📊" }
-                ]
-            },
-            'loja': {
-                tag: "Varejo & Delivery",
-                title: "Vitrine Digital Zap",
-                desc: "Transforme seu Instagram em uma máquina de vendas. Um site lindo onde o cliente monta o pedido e te envia pronto no WhatsApp.",
-                clientFlow: [
-                    { title: "Experiência de App", text: "Seu cliente navega por categorias, vê fotos em alta resolução e descrições detalhadas.", visual: "🛍️" },
-                    { title: "Carrinho Inteligente", text: "Ele adiciona vários itens, vê o total somado e escolhe a forma de entrega.", visual: "🛒" },
-                    { title: "Pedido Formatado", text: "Você recebe no WhatsApp: 'Olá, quero 1x Burguer Bacon e 1x Coca-Cola'. Sem erros.", visual: "💬" }
-                ],
-                ownerFlow: [
-                    { title: "Cadastro Relâmpago", text: "Tire a foto do produto e suba para o site em 10 segundos.", icon: "📸" },
-                    { title: "Controle de Preços", text: "Vai fazer promoção? Mude o preço no app e o site atualiza na hora.", icon: "🏷️" },
-                    { title: "Gestão de Esgotados", text: "Acabou o estoque? Marque como esgotado para não vender o que não tem.", icon: "📦" }
-                ]
-            },
-            'auto': {
-                tag: "E-commerce Pro",
-                title: "Loja 100% Automática",
-                desc: "Para quem não tem tempo a perder. O cliente compra, paga e o sistema dá baixa no estoque. Você só embala e envia.",
-                clientFlow: [
-                    { title: "Checkout Transparente", text: "Pagamento via Pix (Copia e Cola) ou Cartão sem sair do seu site.", visual: "💳" },
-                    { title: "Cálculo de Frete", text: "Opções de entrega ou retirada configuráveis.", visual: "🚚" }
-                ],
-                ownerFlow: [
-                    { title: "Baixa Automática", text: "O sistema reconhece o pagamento e reserva o produto sozinho.", icon: "🤖" },
-                    { title: "Painel Financeiro", text: "Gráficos de faturamento diário, semanal e mensal.", icon: "📈" },
-                    { title: "Zero Calote", text: "O pedido só chega pra você depois de aprovado.", icon: "🔒" }
-                ]
-            }
-        };
-
-        // CARREGAR DADOS
-        const params = new URLSearchParams(window.location.search);
-        const type = params.get('modelo') || 'loja';
-        const data = content[type] || content['loja'];
-
-        document.getElementById('modelo-tag').innerText = data.tag;
-        document.getElementById('modelo-titulo').innerText = data.title;
-        document.getElementById('modelo-desc').innerText = data.desc;
-        
-        // Link Zap
-        const zapMsg = `Olá Vitrô! Gostei do modelo: ${data.title}. Quero saber mais sobre a oferta gratuita.`;
-        document.getElementById('whatsapp-link').href = `https://wa.me/${AGENCY_PHONE}?text=${encodeURIComponent(zapMsg)}`;
-
-        // RENDERIZAR FLUXO DO CLIENTE
-        const clientContainer = document.getElementById('client-features-container');
-        data.clientFlow.forEach(item => {
-            clientContainer.innerHTML += `
-                <div class="feature-row">
-                    <div class="feature-text">
-                        <h3>${item.title}</h3>
-                        <p>${item.text}</p>
-                    </div>
-                    <div class="feature-visual">
-                        <div class="mockup-ui"></div>
-                        <div style="position: absolute; font-size: 4rem; z-index: 2;">${item.visual}</div>
-                    </div>
-                </div>
-            `;
-        });
-
-        // RENDERIZAR FLUXO DO DONO
-        const ownerContainer = document.getElementById('owner-features-container');
-        data.ownerFlow.forEach((item, index) => {
-            ownerContainer.innerHTML += `
-                <div class="card step-card">
-                    <span class="step-number">${index + 1}</span>
-                    <div class="step-icon">${item.icon}</div>
-                    <div class="step-content">
-                        <h3>${item.title}</h3>
-                        <p>${item.text}</p>
-                    </div>
-                </div>
-            `;
-        });
-
-        // OBS: ANIMAÇÕES GSAP FORAM REMOVIDAS DAQUI
-        // O arquivo script.js principal já anima automaticamente todos os elementos
-        // com classes .feature-row e .step-card. Isso evita conflito e bug visual.
-
-    </script>
 </body>
 </html>

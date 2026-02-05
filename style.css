@@ -19,45 +19,24 @@ body {
     color: var(--text-main);
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     overflow-x: hidden;
-    
-    /* BLOQUEIO DE SELEÇÃO E CURSOR TIPO APP */
     user-select: none;
-    -webkit-user-select: none; /* Safari */
-    -moz-user-select: none;    /* Firefox */
-    -ms-user-select: none;     /* IE/Edge */
-    cursor: default;           /* Cursor padrão (seta) em vez de barra */
+    -webkit-user-select: none;
+    cursor: default;
 }
 
-/* Permitir seleção apenas em campos de input */
 input, textarea {
     user-select: text;
     -webkit-user-select: text;
     cursor: text;
 }
 
-/* Cursor de mãozinha em links e botões */
 a, button, .clickable {
     cursor: pointer;
 }
 
-/* Texturas */
-.noise-overlay {
-    position: fixed; inset: 0; pointer-events: none; z-index: 999; opacity: 0.05;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-}
-.bg-glow-1, .bg-glow-2 {
-    position: fixed; width: 500px; height: 500px; border-radius: 50%;
-    filter: blur(150px); opacity: 0.15; z-index: -1;
-}
-.bg-glow-1 { top: -100px; left: -100px; background: var(--accent); }
-.bg-glow-2 { bottom: -100px; right: -100px; background: #4f46e5; }
-
-/* ... (MANTENHA O RESTO DO ARQUIVO IGUAL ABAIXO DESSA LINHA) ... */
-
 /* =========================================
-   2. SISTEMA DE LOGO
+   2. SISTEMA DE LOGO (GERENCIADO PELO SCRIPT.JS)
    ========================================= */
-/* O CSS DO LOGO É INJETADO VIA SCRIPT.JS */
 
 
 /* =========================================
@@ -80,7 +59,6 @@ a, button, .clickable {
 .section-subtitle { text-align: center; color: var(--text-muted); margin-bottom: 60px; font-size: 1.2rem; max-width: 700px; margin: 0 auto 60px auto; }
 .bento-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
 
-/* Card Genérico */
 .card {
     background: var(--bg-card);
     backdrop-filter: blur(12px);
@@ -92,27 +70,22 @@ a, button, .clickable {
 }
 .card:hover { border-color: var(--accent); transform: translateY(-5px); }
 
-/* Painel de Controle (Step Cards) */
+/* Step Cards */
 .step-card {
     display: flex !important;
     gap: 20px; 
     align-items: flex-start; 
     text-align: left;
     background: #1e293b !important; 
-    background-color: #1e293b !important;
     border: 1px solid rgba(255,255,255,0.1);
     padding: 30px;
     border-radius: 24px;
     position: relative;
     overflow: hidden;
     z-index: 10;
-    visibility: visible !important;
-    opacity: 1 !important;
 }
-
-.step-content h3 { color: #ffffff !important; font-size: 1.3rem; margin-bottom: 8px; font-weight: 700; opacity: 1 !important; }
-.step-content p { color: #cbd5e1 !important; line-height: 1.6; font-size: 0.95rem; opacity: 1 !important; }
-
+.step-content h3 { color: #ffffff !important; font-size: 1.3rem; margin-bottom: 8px; font-weight: 700; }
+.step-content p { color: #cbd5e1 !important; line-height: 1.6; font-size: 0.95rem; }
 .step-number {
     font-size: 4rem; font-weight: 900; 
     color: rgba(255,255,255,0.05); 
@@ -157,33 +130,82 @@ a, button, .clickable {
 .featured-btn { background: var(--accent); border: none; color: #000; }
 .featured-btn:hover { background: #34d399; box-shadow: 0 0 25px var(--accent-glow); transform: scale(1.02); }
 
-/* Seções Saiba Mais */
-.hero-detail { text-align: center; padding: 60px 20px; background: radial-gradient(circle at center, rgba(16,185,129,0.1) 0%, transparent 60%); }
-.hero-tag { display: inline-block; background: var(--accent); color: #000; font-weight: 800; padding: 8px 16px; border-radius: 50px; text-transform: uppercase; font-size: 0.8rem; margin-bottom: 20px; }
-.feature-row { display: flex; align-items: center; gap: 50px; margin-bottom: 100px; }
-.feature-row:nth-child(even) { flex-direction: row-reverse; }
-.feature-text { flex: 1; }
-.feature-text h3 { font-size: 2rem; font-weight: 800; color: #fff; margin-bottom: 20px; }
-.feature-text p { color: var(--text-muted); font-size: 1.1rem; line-height: 1.6; margin-bottom: 30px; }
-.feature-visual { flex: 1; background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); border-radius: 20px; border: 1px solid var(--border); aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; box-shadow: 0 20px 50px -20px rgba(0,0,0,0.5); }
-.mockup-ui { width: 80%; height: 80%; background: rgba(255,255,255,0.03); border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); position: relative; }
-.mockup-ui::before { content: ''; position: absolute; top: 15px; left: 15px; width: 40px; height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px; }
+/* Footer Style */
+.footer {
+    text-align: center;
+    padding: 60px 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    margin-top: 60px;
+    color: var(--text-muted);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(15, 23, 42, 0.5);
+}
 
-/* Footer */
-.footer { text-align: center; padding: 60px 20px; border-top: 1px solid var(--border); margin-top: 60px; color: var(--text-muted); display: flex; flex-direction: column; align-items: center; background-color: rgba(15, 23, 42, 0.5); }
+/* Footer conectado (sem margem) para o Saiba Mais */
+.footer.footer-connected {
+    margin-top: 0;
+    border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.footer-cnpj {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+    color: #64748b;
+    margin-top: 10px;
+}
+
+.footer-copy {
+    font-size: 12px;
+    color: #475569;
+}
+
 .nav-fixed { position: fixed; bottom: 30px; right: 30px; z-index: 100; }
 .cta-button { background: var(--accent); color: #000; padding: 12px 24px; border-radius: 50px; text-decoration: none; font-weight: 800; display: flex; align-items: center; gap: 10px; box-shadow: 0 0 20px rgba(0,0,0,0.5); transition: transform 0.3s; }
 .cta-button:hover { transform: scale(1.05); }
 
+/* Mobile */
 @media (max-width: 768px) {
-    .logo-wrapper, .logo-wrapper-v { font-size: 7px; } 
-    .size-hero { font-size: 8px; }
     .section-title { font-size: 2.2rem; }
     .comp-header { display: none; }
     .comp-row { grid-template-columns: 1fr 1fr; grid-template-areas: "feat feat" "bad good"; text-align: center; padding: 15px 10px; }
     .comp-feature { grid-area: feat; border-bottom: 1px solid var(--border); padding-bottom: 10px; margin-bottom: 5px; }
     .comp-bad::before { content: "Outros: "; font-size: 0.8rem; opacity: 0.7; display: block; }
     .comp-good::before { content: "Vitrô: "; font-size: 0.8rem; opacity: 0.7; display: block; }
-    .feature-row { flex-direction: column !important; gap: 30px; text-align: center; margin-bottom: 60px; }
-    .feature-text h3 { font-size: 1.8rem; }
 }
+
+/* =========================================
+   5. EFEITOS DE FUNDO (GLOW)
+   ========================================= */
+.glow-bg {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(16,185,129,0.15) 0%, rgba(0,0,0,0) 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: -1; 
+}
+
+.glow-blue-tint {
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, rgba(0,0,0,0) 70%);
+}
+
+.glow-top-left {
+    top: -10%;
+    left: -10%;
+    position: fixed;
+}
+
+.glow-bottom-right {
+    bottom: -10%;
+    right: -10%;
+    position: fixed;
+}
+
+/* Utility */
+.card-disabled { opacity: 0.5; filter: grayscale(1); pointer-events: none; }
